@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Power BI Dashboard with Chatbot Integration</title>
+    <style>
+        /* Basic styling for the whole page */
+        body, html {
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+            height: 100%;
+            font-family: Arial, sans-serif;
+        }
+
+        /* Style the Power BI dashboard to occupy the entire background */
+        .dashboard-iframe {
+            width: 100vw;
+            height: 100vh;
+            border: none;
+        }
+
+        /* Floating image icon */
+        .floating-icon {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            cursor: pointer;
+            z-index: 10;
+            width: 60px;
+            height: auto;
+        }
+
+        /* Chatbot overlay styling */
+        .chatbot-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background-color: rgba(0, 0, 0, 0.8); /* Semi-transparent background */
+            display: none; /* Hidden initially */
+            z-index: 20;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            color: white;
+        }
+
+        /* Chatbot message */
+        .chatbot-message {
+            font-size: 24px;
+            margin-bottom: 10px;
+        }
+
+        /* Chatbot iframe inside the overlay */
+        .chatbot-iframe {
+            width: 80vw;
+            height: 80vh;
+            border: none;
+        }
+
+        /* Close button for the chatbot overlay */
+        .close-btn {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            font-size: 20px;
+            color: white;
+            cursor: pointer;
+            z-index: 21;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Power BI Dashboard -->
+    <iframe class="dashboard-iframe" 
+            src="https://app.powerbi.com/view?r=eyJrIjoiZjA3MTQxMWUtZDUwZC00N2E4LTkwMTQtYjg0OWY3NWE1NzM1IiwidCI6IjJjODZiYmZjLThkMDQtNDFmZi1hODNhLTk0MmYwNzVlMGY2MCIsImMiOjl9">
+    </iframe>
+
+    <!-- Floating icon for chatbot -->
+    <img src="group1_RetailIQlogo.png" 
+         alt="Chatbot Icon" class="floating-icon" onclick="openChatbot()">
+
+    <!-- Chatbot overlay with iframe -->
+    <div class="chatbot-overlay" id="chatbotOverlay">
+        <div class="chatbot-message">Ask RetailIQ</div>
+        <iframe class="chatbot-iframe" 
+                src="https://copilotstudio.microsoft.com/environments/Default-2c86bbfc-8d04-41ff-a83a-942f075e0f60/bots/cr75d_copilot/webchat?__version__=2">
+        </iframe>
+        <span class="close-btn" onclick="closeChatbot()">✖</span>
+    </div>
+
+    <script>
+        // Function to show the chatbot overlay
+        function openChatbot() {
+            document.getElementById('chatbotOverlay').style.display = 'flex';
+        }
+
+        // Function to close the chatbot overlay
+        function closeChatbot() {
+            document.getElementById('chatbotOverlay').style.display = 'none';
+        }
+    </script>
+
+</body>
+</html>
